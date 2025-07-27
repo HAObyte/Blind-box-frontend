@@ -1,0 +1,20 @@
+/* 强制所有容器内文字默认居中（可按需调整） */
+.container {
+  text-align: center;
+}
+
+/* 卡片、按钮等组件的响应式居中 */
+.luxury-card {
+  align-items: center;
+  text-align: center;
+}
+
+/* 适配手机端，按钮、文本不挤边 */
+@media (max-width: 768px) {
+  .md:mr-12 {
+    margin-right: 0;
+  }
+  .md:text-left {
+    text-align: center;
+  }
+}
