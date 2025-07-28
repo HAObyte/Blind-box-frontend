@@ -1,36 +1,24 @@
-// src/App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-//import Footer from './components/Footer';
-import Home from './pages/Home';
-import BoxDetail from './pages/BoxDetail';
-import Collection from './pages/Collection';
-import Membership from './pages/Membership';
-import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
-import Success from './pages/Success';
-import './styles/globals.css';
+import { useState } from 'react';
 
 function App() {
+    const [message, setMessage] = useState('');
+
+    const fetchHello = async () => {
+        const res = await fetch('http://localhost:3000/api/hello');
+        const data = await res.json();
+        setMessage(data.message);
+    };
+
     return (
-        <Router>
-            <div className="min-h-screen bg-gradient-to-br from-gray-950 to-black text-white">
-                <Navbar />
-                <main className="pt-20 pb-16">
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/box/:id" element={<BoxDetail />} />
-                        <Route path="/collection" element={<Collection />} />
-                        <Route path="/membership" element={<Membership />} />
-                        <Route path="/cart" element={<Cart />} />
-                        <Route path="/checkout" element={<Checkout />} />
-                        <Route path="/success" element={<Success />} />
-                    </Routes>
-                </main>
-                <Footer />
-            </div>
-        </Router>
+        <div className="flex flex-col items-center justify-center h-screen">
+            <button
+                className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+                onClick={fetchHello}
+            >
+                获取后端欢迎语
+            </button>
+            <div className="text-lg">{message}</div>
+        </div>
     );
 }
 

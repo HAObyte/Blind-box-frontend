@@ -1,44 +1,44 @@
-import React, { useState, useRef } from 'react';
-import { gsap } from 'gsap';
+// src/pages/BoxPage.jsx
+import React, { useState } from "react";
 
-export default function BoxPage() {
-    const [isRotating, setIsRotating] = useState(false);
-    const boxRef = useRef(null);
+const BoxPage = () => {
+    const [prize, setPrize] = useState(null);
 
-    // （保持原有旋转、开箱逻辑）
+    const drawPrize = async () => {
+        try {
+            // 向后端发送 GET 请求，获取随机奖品
+            const response = await fetch("http://localhost:5000/api/box/draw");
+            const data = await response.json();
+
+            // 更新奖品数据
+            setPrize(data);
+        } catch (error) {
+            console.error("Error during draw:", error);
+        }
+    };
 
     return (
-        <div className="container mx-auto py-16 px-8 flex flex-col items-center">
-            <h2 className="text-4xl font-bold text-center mb-12">
-                选购您的 <span className="text-gold-500">奢华盲盒</span>
-            </h2>
-
-            <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-3xl">
-                {/* 3D 盲盒容器 */}
-                <div
-                    ref={boxRef}
-                    className="w-64 h-80 bg-gold-500/20 border-4 border-gold-500 rounded-lg flex items-center justify-center cursor-pointer mb-6 md:mb-0 md:mr-12"
-                    onMouseEnter={handleRotate}
-                    onMouseLeave={() => setIsRotating(false)}
-                >
-                    <h3 className="text-2xl">image4（盲盒占位）</h3>
+        <div className="text-center text-white p-8 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 rounded-lg shadow-lg">
+            <h2 className="text-3xl font-bold mb-6">抽盒时间！</h2>
+            <button
+                onClick={drawPrize}
+                className="px-6 py-3 bg-yellow-500 text-black text-xl rounded-full hover:bg-yellow-400 transition duration-300 transform hover:scale-105 mb-6"
+            >
+                抽奖
+            </button>
+            {prize && (
+                <div className="animate__animated animate__fadeIn animate__delay-1s">
+                    <img
+                        src={prize.image}
+                        alt={prize.name}
+                        className="w-48 h-48 object-cover mx-auto mb-4 rounded-full shadow-lg"
+                    />
+                    <h3 className="text-2xl font-semibold">{prize.name}</h3>
+                    <p className="mt-2 text-lg">{prize.description}</p>
                 </div>
-
-                <div className="space-y-4 w-full md:w-auto">
-                    <p className="text-xl text-center md:text-left">
-                        价格：<span className="text-gold-500">¥1299</span>
-                    </p>
-                    <p className="text-gray-400 text-center md:text-left">
-                        包含：奢华手办 ×1、定制证书 ×1、神秘礼品 ×1
-                    </p>
-                    <button
-                        className="px-6 py-3 bg-gold-500 text-black font-bold rounded-lg hover:bg-gold-600 transition block mx-auto md:mx-0"
-                        onClick={handleOpen}
-                    >
-                        立即开箱
-                    </button>
-                </div>
-            </div>
+            )}
         </div>
     );
-}
+};
+
+export default BoxPage;
