@@ -1,8 +1,9 @@
 // src/components/NavBar.jsx
-import React from "react";
+import React from 'react';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
-export default function NavBar() {
+function NavBar() {
     const { isLoggedIn, logout } = useAuth();
 
     return (
@@ -21,19 +22,19 @@ export default function NavBar() {
                 <nav className="hidden md:flex items-center space-x-8">
                     {isLoggedIn && (
                         <>
-                            <a href="/"
-                               className="font-modern text-white hover:text-gold transition-colors duration-300 border-b-2 border-gold py-1">
+                            <Link to="/"
+                                  className="font-modern text-white hover:text-gold transition-colors duration-300 border-b-2 border-gold py-1">
                                 首页
-                            </a>
-                            <a href="/box-list" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
+                            </Link>
+                            <Link to="/box-list" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
                                 盲盒系列
-                            </a>
-                            <a href="/box-search" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
+                            </Link>
+                            <Link to="/box-search" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
                                 盲盒搜索
-                            </a>
-                            <a href="/review" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
+                            </Link>
+                            <Link to="/review" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
                                 盲盒评论
-                            </a>
+                            </Link>
                         </>
                     )}
                 </nav>
@@ -53,18 +54,18 @@ export default function NavBar() {
                             </div>
                             <div className="absolute right-0 mt-2 w-48 bg-luxury-gray border border-gold/30 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
                                 <div className="py-2">
-                                    <a href="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
+                                    <Link to="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
                                         个人中心
-                                    </a>
-                                    <a href="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
+                                    </Link>
+                                    <Link to="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
                                         我的收藏
-                                    </a>
-                                    <a href="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
+                                    </Link>
+                                    <Link to="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
                                         设置
-                                    </a>
+                                    </Link>
                                     <div className="border-t border-gold/20 my-1"></div>
-                                    <a
-                                        href="#"
+                                    <Link
+                                        to="#"
                                         onClick={(e) => {
                                             e.preventDefault();
                                             logout();
@@ -72,24 +73,24 @@ export default function NavBar() {
                                         className="block px-4 py-2 text-sm text-white/70 hover:bg-luxury-black hover:text-gold"
                                     >
                                         退出登录
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
                     ) : (
                         <div className="flex space-x-3">
-                            <a
-                                href="/login"
+                            <Link
+                                to="/login"
                                 className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1"
                             >
                                 登录
-                            </a>
-                            <a
-                                href="/register"
+                            </Link>
+                            <Link
+                                to="/register"
                                 className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1"
                             >
                                 注册
-                            </a>
+                            </Link>
                         </div>
                     )}
 
@@ -102,3 +103,5 @@ export default function NavBar() {
         </header>
     );
 }
+
+export default NavBar;

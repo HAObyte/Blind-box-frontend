@@ -1,37 +1,22 @@
+// src/pages/Register.jsx
 import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaLock } from 'react-icons/fa';
 
-export default function Register() {
+function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-    const { register } = useAuth();
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setLoading(true);
-        setError('');
-
-        // 验证密码是否匹配
-        if (password !== confirmPassword) {
-            setError('两次输入的密码不一致');
-            setLoading(false);
+        if (password!== confirmPassword) {
+            alert('两次输入的密码不一致，请重新输入！');
             return;
         }
-
-        try {
-            await register(username, password);
-            navigate('/login');
-        } catch (error) {
-            setError(error.response?.data?.message || '注册失败，请重试');
-        } finally {
-            setLoading(false);
-        }
+        // 这里可添加向后端发送注册请求的逻辑
+        // 假设注册成功，跳转到登录页面
+        navigate('/login');
     };
 
     return (
@@ -51,38 +36,37 @@ export default function Register() {
                     </div>
 
                     <h2 className="font-elegant text-3xl text-gold text-center mb-2 tracking-wider">
-                        感谢您使用Hanson's Blind Box!
+                        感谢选择 Hanson's Blind Box!
                     </h2>
-                    <div className="mb-6 relative">
-                        <input
-                            type="text"
-                            placeholder="用户名"
-                            className="w-full pl-10 pr-4 py-3 bg-luxury-black/50 border border-gold/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-300 text-white placeholder-white/40"
-                            required
-                        />
-                    </div>
-                    <div className="mb-8 relative">
-                        <input
-                            type="password"
-                            placeholder="密码"
-                            className="w-full pl-10 pr-4 py-3 bg-luxury-black/50 border border-gold/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-300 text-white placeholder-white/40"
-                            required
-                        />
-                    </div>
-                    <p className="text-center text-white/60 mb-8">点击下方按钮登录</p>
 
+                    <input
+                        type="text"
+                        placeholder="用户名"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className="w-full p-3 mb-4 border border-gold/30 rounded-md bg-luxury-black text-white"
+                    />
+                    <input
+                        type="password"
+                        placeholder="密码"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full p-3 mb-4 border border-gold/30 rounded-md bg-luxury-black text-white"
+                    />
+                    <input
+                        type="password"
+                        placeholder="确认密码"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        className="w-full p-3 mb-6 border border-gold/30 rounded-md bg-luxury-black text-white"
+                    />
                     <button
-                        onClick={() => {
-                            login();
-                            navigate('/');
-                        }}
-                        className="w-full py-3 bg-gradient-to-r from-gold to-gold-light text-luxury-black font-modern font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/20 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2"
+                        onClick={()=>navigate('/login')}
+                        type="submit"
+                        className="w-full px-8 py-3 bg-gold text-luxury-black font-modern font-semibold rounded-sm hover:bg-gold-light transition-all duration-300 shadow-gold hover:shadow-gold-glow transform hover:-translate-y-1"
                     >
-                        <i className="fa fa-sign-in"></i>
-                        <span>加入HBB</span>
+                        注册
                     </button>
-
-                    {/* 注册链接 */}
                     <div className="mt-6 text-center">
                         <span className="text-white/60">已有账户?</span>
                         <a
@@ -93,12 +77,47 @@ export default function Register() {
                         </a>
                     </div>
                 </div>
-
-                {/* 页脚信息 */}
                 <p className="mt-6 text-center text-white/30 text-sm">
                     © 2025 Hanson's Blind Box. 保留所有权利.
                 </p>
             </div>
         </div>
     );
+    /*return (
+        <div className="flex justify-center items-center h-screen bg-luxury-black">
+            <form onSubmit={handleSubmit} className="bg-luxury-gray p-8 rounded-lg shadow-md w-96">
+                <h2 className="font-elegant text-3xl text-gold text-center mb-6">注册</h2>
+                <input
+                    type="text"
+                    placeholder="用户名"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className="w-full p-3 mb-4 border border-gold/30 rounded-md bg-luxury-black text-white"
+                />
+                <input
+                    type="password"
+                    placeholder="密码"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full p-3 mb-4 border border-gold/30 rounded-md bg-luxury-black text-white"
+                />
+                <input
+                    type="password"
+                    placeholder="确认密码"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="w-full p-3 mb-6 border border-gold/30 rounded-md bg-luxury-black text-white"
+                />
+                <button
+                    type="submit"
+                    className="w-full px-8 py-3 bg-gold text-luxury-black font-modern font-semibold rounded-sm hover:bg-gold-light transition-all duration-300 shadow-gold hover:shadow-gold-glow transform hover:-translate-y-1"
+                >
+                    注册
+                </button>
+            </form>
+        </div>
+    );*/
 }
+
+export default Register;
+

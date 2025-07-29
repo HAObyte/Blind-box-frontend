@@ -1,29 +1,20 @@
+// src/pages/Login.jsx
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import { FaUser, FaLock } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // 引入 useNavigate 函数
 
-export default function Login() {
+function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
     const { login } = useAuth();
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // 获取 navigate 函数
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setLoading(true);
-        setError('');
-
-        try {
-            await login(username, password);
-            navigate('/');
-        } catch (error) {
-            setError(error.response?.data?.message || '登录失败，请重试');
-        } finally {
-            setLoading(false);
-        }
+        // 这里可添加向后端验证用户名和密码的逻辑
+        // 假设验证成功
+        login(); // 调用 login 函数更新登录状态
+        navigate('/'); // 跳转到主页
     };
 
     return (
@@ -49,6 +40,8 @@ export default function Login() {
                         <input
                             type="text"
                             placeholder="用户名"
+                            value={username} // 绑定 username 状态
+                            onChange={(e) => setUsername(e.target.value)} // 更新 username 状态
                             className="w-full pl-10 pr-4 py-3 bg-luxury-black/50 border border-gold/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-300 text-white placeholder-white/40"
                             required
                         />
@@ -57,6 +50,8 @@ export default function Login() {
                         <input
                             type="password"
                             placeholder="密码"
+                            value={password} // 绑定 password 状态
+                            onChange={(e) => setPassword(e.target.value)} // 更新 password 状态
                             className="w-full pl-10 pr-4 py-3 bg-luxury-black/50 border border-gold/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-300 text-white placeholder-white/40"
                             required
                         />
@@ -64,10 +59,7 @@ export default function Login() {
                     <p className="text-center text-white/60 mb-8">点击下方按钮登录</p>
 
                     <button
-                        onClick={() => {
-                            login();
-                            navigate('/');
-                        }}
+                        onClick={handleSubmit} // 调用 handleSubmit 函数
                         className="w-full py-3 bg-gradient-to-r from-gold to-gold-light text-luxury-black font-modern font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/20 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2"
                     >
                         <i className="fa fa-sign-in"></i>
@@ -93,3 +85,5 @@ export default function Login() {
         </div>
     );
 }
+
+export default Login;
