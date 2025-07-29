@@ -8,9 +8,9 @@ export default function NavBar() {
                 <div className="flex items-center">
                     <div
                         className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center mr-3 shadow-gold">
-                        <span className="font-elegant font-bold text-luxury-black text-xl">BB</span>
+                        <span className="font-elegant font-bold text-luxury-black text-xl">HBB</span>
                     </div>
-                    <h1 className="font-elegant text-2xl md:text-3xl text-gold text-shadow-gold">JoJo's Bizarre Adventure</h1>
+                    <h1 className="font-elegant text-2xl md:text-3xl text-gold text-shadow-gold">Hanson's Blind Box</h1>
                 </div>
 
                 {/* 导航链接 - 桌面端 */}

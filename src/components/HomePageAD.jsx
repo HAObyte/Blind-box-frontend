@@ -13,7 +13,7 @@ const BlindBoxHomepageAd = () => {
                 <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-1/2 mb-10 md:mb-0">
                         <div className="inline-block px-4 py-1 border border-gold/50 rounded-full mb-6">
-                            <span className="text-gold text-sm font-modern tracking-wider italic">Official Blind Box Series</span>
+                            <span className="text-gold text-sm font-modern tracking-wider italic">JoJo's Bizarre Adventure</span>
                         </div>
                         <h2 className="font-elegant text-[clamp(2rem,5vw,4rem)] leading-tight mb-6 text-shadow-gold">
                             精美<span className="text-gold italic"> JoJo </span>盲盒<ul/> NJU试点发售
@@ -55,7 +55,7 @@ const BlindBoxHomepageAd = () => {
                             <div className="relative float-effect">
                                 <div className="absolute inset-0 rounded-full gold-gradient opacity-30 blur-xl"></div>
                                 <img
-                                    src="public/不灭钻石/ren.jpg"
+                                    src="public/AD.png"
                                     className="w-full h-auto rounded-xl shadow-2xl border-4 border-gold/30 relative z-10"
                                     alt="皇家艺术盲盒封面"
                                 />

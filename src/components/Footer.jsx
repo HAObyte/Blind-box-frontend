@@ -5,13 +5,12 @@ export default function Footer() {
         <footer className="bg-luxury-black border-t border-gold/20 pt-16 pb-8">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                    {/* 品牌信息 */}
                     <div>
                         <div className="flex items-center mb-6">
                             <div className="w-10 h-10 rounded-full gold-gradient flex items-center justify-center mr-3 shadow-gold">
-                                <span className="font-elegant font-bold text-luxury-black text-lg">Hanson's BlindBox</span>
+                                <span className="font-elegant font-bold text-luxury-black text-lg">HBB</span>
                             </div>
-                            <h2 className="font-elegant text-2xl text-gold">JoJo's Bizarre Adventure</h2>
+                            <h2 className="font-elegant text-2xl text-gold">Hanson's Blind Box</h2>
                         </div>
                         <p className="text-white/60 mb-6">
                             探索奢华，收藏经典。我们致力于为您提供最顶级的盲盒体验，每一款盲盒都代表着匠心与品质。

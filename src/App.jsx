@@ -6,8 +6,8 @@ import HotBoxCard from "./components/HotBoxCard.jsx";
 import ReviewCard from "./components/ReviewCard.jsx";
 import BlindBoxHomepageAd from "./components/HomePageAD.jsx";
 
-export default function Home() {
-    // 分类数据
+export default function Home()
+{
     const categories = [
         {
             title: "星尘斗士",
@@ -31,24 +31,52 @@ export default function Home() {
         },
     ];
 
-    // 热门盲盒
     const hotBoxes = [
         {
             title: "绅士乔瑟夫",
             image: "../public/战斗潮流/乔瑟夫.jpg",
-            price: 69.9,
+            price: 29.9,
             tags: ["SSR", "限时", "动画经典"],
         },
         {
             title: "黄金体验礼盒",
             image: "../public/黄金之风/乔鲁诺.jpg",
-            price: 88.8,
+            price: 39.9,
             tags: ["UR", "新品"],
         },
         {
-            title: "徐伦特典",
-            image: "../public/石之海/徐伦.jpg",
+            title: "承太郎专辑",
+            image: "../public/星尘斗士/承太郎.jpg",
             price: 59.9,
+            tags: ["SSR", "人气榜"],
+        },
+        {
+            title: "星尘斗士-配角的光芒",
+            image: "../public/星尘斗士/阿布德尔.png",
+            price: 29.9,
+            tags: ["SR", "收藏"],
+        },
+        {
+            title: "反派的人格魅力-反派特辑",
+            image: "../public/黄金之风/迪亚波罗.jpg",
+            price: 59.9,
+            tags: ["S", "人气榜"],
+        },
+        {
+            title: "黄金色波纹",
+            image: "../public/战斗潮流/卡兹.jpg",
+            price: 59.9,
+            tags: ["SR", "人气榜"],
+        },
+        {
+            title: "STAND!",
+            image: "../public/星尘斗士/白金之星.jpg",
+            price: 99.9,
+            tags: ["SR", "动漫灵魂"],
+        },{
+            title: "格斗动漫也有女面孔",
+            image: "../public/黄金之风/特利休.jpg",
+            price: 39.9,
             tags: ["SR", "人气榜"],
         },
     ];
@@ -57,17 +85,16 @@ export default function Home() {
     const reviews = [
         {
             avatar: "https://picsum.photos/id/101/100/100",
-            name: "徐同学",
-            comment: "第一次抽就中了 UR Dio，太惊喜了，金光闪闪！",
+            name: "Hanson",
+            comment: "这个网站做的非常好，给了我非常愉快的抽盲盒体验，所有的盲盒概率都是一样的，不想有些其他网站故意将稀有款的概率调的非常低，后台所有的数据和逻辑都是公开的，我真的是爱死这个开发者了！！！（PS：附上几张我特别喜欢的角色~）",
             photos: [
-                "./public/不灭钻石/ren.jpg"
+                "./public/不灭钻石/东方仗助.jpg",
+                "./public/不灭钻石/承太郎.jpg",
+                "./public/战斗潮流/卡兹.jpg",
+                "./public/战斗潮流/西撒.jpg",
+                "./public/黄金之风/特利休.jpg",
+                "./public/星尘斗士/乔瑟夫.png"
             ],
-        },
-        {
-            avatar: "https://picsum.photos/id/102/100/100",
-            name: "阿杰",
-            comment: "开盒体验很棒，包装精致，感觉超值。",
-            photos: [],
         },
     ];
 
@@ -124,20 +151,28 @@ export default function Home() {
                 </div>
             </section>
 
-
-            {/* 用户评价 */}
-            <section className="py-20 bg-luxury-black border-t border-gold/10">
+            <section className="py-16 bg-luxury-black relative">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl text-gold font-elegant mb-10 text-center">用户评价</h2>
-                    <div className="grid gap-8 md:grid-cols-2">
-                        {reviews.map((review, i) => (
-                            <ReviewCard key={i} {...review} />
+                    <div className="flex justify-between items-end mb-12">
+                        <div>
+                            <h2 className="font-elegant text-3xl md:text-4xl text-white mb-2">客户评价-眼见为实</h2>
+                            <p className="text-white/50">我们致力于产品的真实性，让我们的客户替我们说话</p>
+                        </div>
+                        <a href="https://www.nju.edu.cn/"
+                           className="hidden md:flex items-center text-gold hover:text-gold-light transition-colors">
+                            查看全部评论 <i className="fa fa-angle-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div className="container mx-auto px-4">
+                        <div className="grid gap-8">
+                            {reviews.map((review, i) => (
+                                <ReviewCard key={i} {...review} />
                             ))}
                         </div>
                     </div>
-                </section>
-
+                </div>
+            </section>
                 <Footer/>
             </>
             );
-            }
+}
