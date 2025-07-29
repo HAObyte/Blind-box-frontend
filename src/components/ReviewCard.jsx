@@ -7,7 +7,8 @@ export default function ReviewCard({ avatar, name, comment, photos = [] }) {
                 <img
                     src={avatar}
                     alt={name}
-                    className="w-12 h-12 rounded-full border-2 border-gold object-cover mr-4"
+                    /*className="w-12 h-12 rounded-full border-2 border-gold object-cover mr-4"*/
+                    height="50px"
                 />
                 <div>
                     <h4 className="text-gold font-elegant text-lg">{name}</h4>
@@ -24,7 +25,9 @@ export default function ReviewCard({ avatar, name, comment, photos = [] }) {
                             key={index}
                             src={src}
                             alt={`晒单图 ${index + 1}`}
-                            className="w-full h-24 object-cover rounded-md border border-gold/10 hover:scale-105 transition-transform"
+                            /*className="w-full h-24 object-cover rounded-md border border-gold/10 hover:scale-105 transition-transform"*/
+                            height="100px"
+
                         />
                     ))}
                 </div>

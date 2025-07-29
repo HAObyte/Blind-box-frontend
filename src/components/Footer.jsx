@@ -9,9 +9,9 @@ export default function Footer() {
                     <div>
                         <div className="flex items-center mb-6">
                             <div className="w-10 h-10 rounded-full gold-gradient flex items-center justify-center mr-3 shadow-gold">
-                                <span className="font-elegant font-bold text-luxury-black text-lg">LB</span>
+                                <span className="font-elegant font-bold text-luxury-black text-lg">Hanson's BlindBox</span>
                             </div>
-                            <h2 className="font-elegant text-2xl text-gold">LuxuryBox</h2>
+                            <h2 className="font-elegant text-2xl text-gold">JoJo's Bizarre Adventure</h2>
                         </div>
                         <p className="text-white/60 mb-6">
                             探索奢华，收藏经典。我们致力于为您提供最顶级的盲盒体验，每一款盲盒都代表着匠心与品质。
@@ -45,19 +45,19 @@ export default function Footer() {
                         <ul className="space-y-3 text-white/60 text-sm">
                             <li className="flex items-start">
                                 <i className="fa fa-map-marker text-gold mt-1 mr-3"></i>
-                                上海市黄浦区南京东路123号奢华中心5楼
+                                Nanjing University,No.22 HanKou Road, Nanjing City, Jiangsu Province, China.
                             </li>
                             <li className="flex items-start">
                                 <i className="fa fa-phone text-gold mt-1 mr-3"></i>
-                                400-888-9999
+                                155-0527-9688
                             </li>
                             <li className="flex items-start">
                                 <i className="fa fa-envelope text-gold mt-1 mr-3"></i>
-                                service@luxurybox.com
+                                715754214@qq.com
                             </li>
                             <li className="flex items-start">
                                 <i className="fa fa-clock-o text-gold mt-1 mr-3"></i>
-                                周一至周日 10:00-22:00
+                                目前暂时没有空闲时间~
                             </li>
                         </ul>
                     </div>
@@ -84,7 +84,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <p className="text-center text-white/40 text-sm">© 2025 LuxuryBox 版权所有</p>
+                <p className="text-center text-white/40 text-sm">© 2025 Hanson's BlindBox 版权所有</p>
             </div>
         </footer>
     );

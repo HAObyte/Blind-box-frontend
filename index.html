@@ -1,13 +1,107 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <!-- 引入奢华字体（可替换为付费字体，这里用免费替代） -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <title>奢华盲盒</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Box - 奢华盲盒抽盒机</title>
+  <!-- 引入外部资源 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- 配置Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              light: '#f5d48e',
+              DEFAULT: '#d4af37',
+              dark: '#b8860b'
+            },
+            luxury: {
+              black: '#0a0a0a',
+              gray: '#1a1a1a',
+              silver: '#e6e6e6'
+            }
+          },
+          fontFamily: {
+            elegant: ['Playfair Display', 'serif'],
+            modern: ['Montserrat', 'sans-serif']
+          },
+          boxShadow: {
+            'gold': '0 0 15px rgba(212, 175, 55, 0.5)',
+            'gold-glow': '0 0 25px rgba(212, 175, 55, 0.7)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- 自定义样式 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow-gold {
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+      }
+      .border-gradient {
+        border-image: linear-gradient(to right, #d4af37, #ffffff, #d4af37) 1;
+      }
+      .bg-luxury-pattern {
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #d4af37 0%, #f5d48e 50%, #d4af37 100%);
+      }
+      .rotate-slow {
+        animation: rotate 20s linear infinite;
+      }
+      .float-effect {
+        animation: float 6s ease-in-out infinite;
+      }
+      .shine-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .shine-effect::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(30deg);
+        animation: shine 6s infinite;
+      }
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+      @keyframes shine {
+        0% { transform: translateX(-100%) rotate(30deg); }
+        100% { transform: translateX(100%) rotate(30deg); }
+      }
+    }
+  </style>
+
+  <!-- 字体引入 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-playfair">
 <div id="root"></div>
-<script type="module" src="src/App.jsx"></script>
+<script type="module" src="./src/main.jsx"></script>
 </body>
 </html>

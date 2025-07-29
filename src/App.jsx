@@ -4,6 +4,7 @@ import Footer from "./components/Footer.jsx";
 import LuxuryCard from "./components/LuxuryCard.jsx";
 import HotBoxCard from "./components/HotBoxCard.jsx";
 import ReviewCard from "./components/ReviewCard.jsx";
+import HomePageAD from "./components/HomePageAD.jsx";
 
 export default function Home() {
     // 分类数据
@@ -11,42 +12,42 @@ export default function Home() {
         {
             title: "战斗潮流",
             description: "JoJo 系列高人气收藏盲盒，重现热血对决",
-            image: "/images/战斗潮流/cover.jpg",
+            image: "../public/战斗潮流/surface.jpg",
         },
         {
             title: "黄金之风",
             description: "意大利黑帮的荣耀传说，稀有藏品等你来抽",
-            image: "/images/黄金之风/cover.jpg",
+            image: "../public/黄金之风/surface.jpg",
         },
         {
             title: "不灭钻石",
             description: "镇上的奇妙冒险，和平街的隐藏宝藏",
-            image: "/images/不灭钻石/cover.jpg",
+            image: "../public/不灭钻石/surface.jpg",
         },
         {
             title: "石之海",
             description: "空条徐伦与父亲的命运之战，盲盒新篇章",
-            image: "/images/石之海/cover.jpg",
+            image: "../public/石之海/surface.jpg",
         },
     ];
 
     // 热门盲盒
     const hotBoxes = [
         {
-            title: "DIO豪华盒",
-            image: "/images/战斗潮流/dio.jpg",
+            title: "绅士乔瑟夫",
+            image: "../public/战斗潮流/乔瑟夫.jpg",
             price: 69.9,
             tags: ["SSR", "限时", "动画经典"],
         },
         {
             title: "黄金体验礼盒",
-            image: "/images/黄金之风/giorno.jpg",
+            image: "../public/黄金之风/乔鲁诺.jpg",
             price: 88.8,
             tags: ["UR", "新品"],
         },
         {
             title: "徐伦特典",
-            image: "/images/石之海/jolyne.jpg",
+            image: "../public/石之海/徐伦.jpg",
             price: 59.9,
             tags: ["SR", "人气榜"],
         },
@@ -74,15 +75,16 @@ export default function Home() {
     return (
         <>
             <NavBar />
+            <HomePageAD />
 
-            {/* Banner */}
+           {/*  Banner
             <section className="relative h-[60vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/banner.jpg')" }}>
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                     <h1 className="text-4xl md:text-6xl text-gold font-elegant text-shadow text-center">
                         盲盒的世界，等你探索
                     </h1>
                 </div>
-            </section>
+            </section>*/}
 
             {/* 分类区域 */}
             <section className="py-20 bg-luxury-black">

@@ -6,15 +6,17 @@ export default function NavBar() {
             <div className="container mx-auto px-4 py-3 flex items-center justify-between">
                 {/* 品牌 Logo */}
                 <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center mr-3 shadow-gold">
-                        <span className="font-elegant font-bold text-luxury-black text-xl">LB</span>
+                    <div
+                        className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center mr-3 shadow-gold">
+                        <span className="font-elegant font-bold text-luxury-black text-xl">BB</span>
                     </div>
-                    <h1 className="font-elegant text-2xl md:text-3xl text-gold text-shadow-gold">LuxuryBox</h1>
+                    <h1 className="font-elegant text-2xl md:text-3xl text-gold text-shadow-gold">JoJo's Bizarre Adventure</h1>
                 </div>
 
                 {/* 导航链接 - 桌面端 */}
                 <nav className="hidden md:flex items-center space-x-8">
-                    <a href="#" className="font-modern text-white hover:text-gold transition-colors duration-300 border-b-2 border-gold py-1">
+                    <a href="#"
+                       className="font-modern text-white hover:text-gold transition-colors duration-300 border-b-2 border-gold py-1">
                         首页
                     </a>
                     <a href="#" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
@@ -54,7 +56,7 @@ export default function NavBar() {
                             <img
                                 src="https://picsum.photos/id/64/200/200"
                                 alt="用户头像"
-                                className="w-full h-full object-cover"
+                                height="50px"
                             />
                         </div>
                         <div className="absolute right-0 mt-2 w-48 bg-luxury-gray border border-gold/30 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
@@ -76,12 +78,15 @@ export default function NavBar() {
                         </div>
                     </div>
 
+
                     {/* 移动端菜单按钮 */}
                     <button className="md:hidden text-white/80 hover:text-gold transition-colors duration-300">
                         <i className="fa fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
+
+
         </header>
     );
 }
