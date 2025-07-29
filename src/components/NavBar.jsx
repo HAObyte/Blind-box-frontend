@@ -15,41 +15,24 @@ export default function NavBar() {
 
                 {/* 导航链接 - 桌面端 */}
                 <nav className="hidden md:flex items-center space-x-8">
-                    <a href="#"
+                    <a href="/"
                        className="font-modern text-white hover:text-gold transition-colors duration-300 border-b-2 border-gold py-1">
                         首页
                     </a>
-                    <a href="#" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
+                    <a href="/box-list" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
                         盲盒系列
                     </a>
-                    <a href="#" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
-                        收藏图鉴
+                    <a href="/box-search" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
+                        盲盒搜索
                     </a>
-                    <a href="#" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
-                        会员尊享
+                    <a href="/review" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
+                        盲盒评论
                     </a>
                 </nav>
 
                 {/* 用户功能区 */}
                 <div className="flex items-center space-x-5">
-                    <button className="text-white/80 hover:text-gold transition-colors duration-300 relative">
-                        <i className="fa fa-search text-xl"></i>
-                    </button>
-                    <button className="text-white/80 hover:text-gold transition-colors duration-300 relative">
-                        <i className="fa fa-bell text-xl"></i>
-                        <span className="absolute -top-1 -right-1 w-4 h-4 bg-gold rounded-full flex items-center justify-center text-xs text-luxury-black font-bold">
-              3
-            </span>
-                    </button>
-                    <button className="text-white/80 hover:text-gold transition-colors duration-300 relative">
-                        <i className="fa fa-shopping-bag text-xl"></i>
-                        <span className="absolute -top-1 -right-1 w-4 h-4 bg-gold rounded-full flex items-center justify-center text-xs text-luxury-black font-bold">
-              2
-            </span>
-                    </button>
-
                     <div className="hidden md:block h-8 w-[1px] bg-gold/30 mx-1"></div>
-
                     {/* 用户头像和下拉菜单 */}
                     <div className="relative group">
                         <div className="w-9 h-9 rounded-full border-2 border-gold/50 overflow-hidden cursor-pointer">
