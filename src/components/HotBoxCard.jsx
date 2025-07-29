@@ -1,12 +1,12 @@
 import React from "react";
-
 export default function HotBoxCard({ title, image, price, tags = [] }) {
     return (
-        <div className="w-64 shrink-0 bg-luxury-gray rounded-xl overflow-hidden border border-gold/20 shadow hover:shadow-gold transition duration-300">
+        <div className="group relative overflow-hidden rounded-lg shine-effect">
+            <div className="group relative bg-luxury-gray border border-gold/20 rounded-xl shadow-gold hover:shadow-gold-md overflow-hidden transition-all duration-300 w-300 md:w-[150%] lg:w-full">
             <img
                 src={image}
                 alt={title}
-                className="w-full h-40 object-cover"
+
             />
             <div className="p-4">
                 <h3 className="font-elegant text-gold text-lg mb-2">{title}</h3>
@@ -22,6 +22,7 @@ export default function HotBoxCard({ title, image, price, tags = [] }) {
                     ))}
                 </div>
             </div>
+        </div>
         </div>
     );
 }

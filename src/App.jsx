@@ -4,29 +4,29 @@ import Footer from "./components/Footer.jsx";
 import LuxuryCard from "./components/LuxuryCard.jsx";
 import HotBoxCard from "./components/HotBoxCard.jsx";
 import ReviewCard from "./components/ReviewCard.jsx";
-import HomePageAD from "./components/HomePageAD.jsx";
+import BlindBoxHomepageAd from "./components/HomePageAD.jsx";
 
 export default function Home() {
     // 分类数据
     const categories = [
         {
-            title: "战斗潮流",
-            description: "JoJo 系列高人气收藏盲盒，重现热血对决",
-            image: "../public/战斗潮流/surface.jpg",
+            title: "星尘斗士",
+            description: "乔家第一战神埃及之旅，过关斩将对抗恶人救世主",
+            image: "../public/星尘斗士/surface.jpg",
         },
         {
             title: "黄金之风",
-            description: "意大利黑帮的荣耀传说，稀有藏品等你来抽",
+            description: "意大利黑帮的荣耀传说，黄金精神彰显JoJo世界底色",
             image: "../public/黄金之风/surface.jpg",
         },
         {
             title: "不灭钻石",
-            description: "镇上的奇妙冒险，和平街的隐藏宝藏",
+            description: "镇上的奇妙冒险，和平街的隐藏宝藏与幕后的恐怖杀人魔",
             image: "../public/不灭钻石/surface.jpg",
         },
         {
             title: "石之海",
-            description: "空条徐伦与父亲的命运之战，盲盒新篇章",
+            description: "徐伦与父亲的命运之战，旧世界重启，开启盲盒新篇章",
             image: "../public/石之海/surface.jpg",
         },
     ];
@@ -60,8 +60,7 @@ export default function Home() {
             name: "徐同学",
             comment: "第一次抽就中了 UR Dio，太惊喜了，金光闪闪！",
             photos: [
-                "https://picsum.photos/id/100/200/150",
-                "https://picsum.photos/id/1011/200/150",
+                "./public/不灭钻石/ren.jpg"
             ],
         },
         {
@@ -74,41 +73,57 @@ export default function Home() {
 
     return (
         <>
-            <NavBar />
-            <HomePageAD />
+            <NavBar/>
+            <BlindBoxHomepageAd/>
 
-           {/*  Banner
-            <section className="relative h-[60vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/banner.jpg')" }}>
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <h1 className="text-4xl md:text-6xl text-gold font-elegant text-shadow text-center">
-                        盲盒的世界，等你探索
-                    </h1>
-                </div>
-            </section>*/}
-
-            {/* 分类区域 */}
-            <section className="py-20 bg-luxury-black">
+            <section className="py-16 bg-luxury-black relative">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl text-gold font-elegant mb-10 text-center">精选系列</h2>
-                    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-                        {categories.map((item, i) => (
-                            <LuxuryCard key={i} {...item} />
-                        ))}
+                    <div className="flex justify-between items-end mb-12">
+                        <div>
+                            <h2 className="font-elegant text-3xl md:text-4xl text-white mb-2">经典Stand盲盒系列</h2>
+                            <p className="text-white/50">探索我们精心挑选的经典收藏系列</p>
+                        </div>
+                        <a href="https://www.nju.edu.cn/"
+                           className="hidden md:flex items-center text-gold hover:text-gold-light transition-colors">
+                            查看全部系列 <i className="fa fa-angle-right ml-2"></i>
+                        </a>
                     </div>
+                    <div className="container mx-auto px-4">
+                        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                            {categories.map((item, i) => (
+                                <LuxuryCard key={i} {...item} />
+                            ))}
+                        </div>
+                    </div>
+
+
                 </div>
             </section>
 
-            {/* 热门盲盒 */}
-            <section className="py-20 bg-luxury-black border-t border-gold/10">
+            <section className="py-16 bg-luxury-black relative">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl text-gold font-elegant mb-10 text-center">热门盲盒</h2>
-                    <div className="flex gap-6 overflow-x-auto no-scrollbar pb-2">
-                        {hotBoxes.map((box, i) => (
-                            <HotBoxCard key={i} {...box} />
-                        ))}
+                    <div className="flex justify-between items-end mb-12">
+                        <div>
+                            <h2 className="font-elegant text-3xl md:text-4xl text-white mb-2">热门潮流-主题盲盒</h2>
+                            <p className="text-white/50">当下最热门的主题盲盒系列</p>
+                        </div>
+                        <a href="https://www.nju.edu.cn/"
+                           className="hidden md:flex items-center text-gold hover:text-gold-light transition-colors">
+                            查看全部系列 <i className="fa fa-angle-right ml-2"></i>
+                        </a>
                     </div>
+                    <div className="container mx-auto px-4">
+                        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                            {hotBoxes.map((item, i) => (
+                                <HotBoxCard key={i} {...item} />
+                            ))}
+                        </div>
+                    </div>
+
+
                 </div>
             </section>
+
 
             {/* 用户评价 */}
             <section className="py-20 bg-luxury-black border-t border-gold/10">
@@ -117,12 +132,12 @@ export default function Home() {
                     <div className="grid gap-8 md:grid-cols-2">
                         {reviews.map((review, i) => (
                             <ReviewCard key={i} {...review} />
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <Footer />
-        </>
-    );
-}
+                <Footer/>
+            </>
+            );
+            }

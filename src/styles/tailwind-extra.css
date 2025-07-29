@@ -19,23 +19,34 @@
     }
     .shine-effect {
         position: relative;
-        overflow: hidden;
+        overflow: hidden; /* 确保裁剪超出内容 */
+        /* 保留原有其他样式（如背景、边框等） */
     }
     .shine-effect::after {
         content: '';
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
+        /* 调整定位，让光效从左侧外部进入 */
+        top: 0;
+        left: -100%;
+        width: 100%; /* 改为与容器等宽 */
+        height: 100%; /* 改为与容器等高 */
         background: linear-gradient(
                 to right,
                 rgba(255, 255, 255, 0) 0%,
                 rgba(255, 255, 255, 0.3) 50%,
                 rgba(255, 255, 255, 0) 100%
         );
-        transform: rotate(30deg);
-        animation: shine 6s infinite;
+        transform: rotate(0deg); /* 去掉旋转，改为水平扫光更自然（如需旋转，结合容器尺寸微调） */
+        animation: shine 3s infinite linear; /* 加快动画，线性运动更流畅 */
+        z-index: 1; /* 确保光效在内容下层（如需覆盖内容，调整 z-index 到内容层之上） */
+    }
+    @keyframes shine {
+        0% {
+            left: -100%;
+        }
+        100% {
+            left: 100%;
+        }
     }
     @keyframes rotate {
         from { transform: rotate(0deg); }
@@ -45,9 +56,5 @@
         0% { transform: translateY(0px); }
         50% { transform: translateY(-15px); }
         100% { transform: translateY(0px); }
-    }
-    @keyframes shine {
-        0% { transform: translateX(-100%) rotate(30deg); }
-        100% { transform: translateX(100%) rotate(30deg); }
     }
 }

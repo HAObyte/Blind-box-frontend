@@ -3,25 +3,23 @@ import '../styles/BlindBoxHomepageAd.css'; // 样式文件将在后面提供
 
 const BlindBoxHomepageAd = () => {
     return (
-        <section className="hero-section">
-            {/* 背景图和半透明黑色蒙层 */}
-            <div className="hero-bg">
-                {/* 背景图将通过CSS设置 */}
-                <div className="overlay"></div> {/* 半透明黑色蒙层 */}
-            </div>
+        <section className="relative overflow-hidden bg-luxury-black py-8 md:py-16">
+            <div
+                className="absolute inset-0 bg-[url('https://picsum.photos/id/1/1920/1080')] bg-cover bg-center opacity-20"></div>
+            <div
+                className="absolute inset-0 bg-gradient-to-r from-luxury-black via-luxury-black/70 to-transparent"></div>
 
-            {/* 内容区域 */}
             <div className="container mx-auto px-4 relative z-10">
                 <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-1/2 mb-10 md:mb-0">
                         <div className="inline-block px-4 py-1 border border-gold/50 rounded-full mb-6">
-                            <span className="text-gold text-sm font-modern tracking-wider">限量尊享系列</span>
+                            <span className="text-gold text-sm font-modern tracking-wider italic">Official Blind Box Series</span>
                         </div>
                         <h2 className="font-elegant text-[clamp(2rem,5vw,4rem)] leading-tight mb-6 text-shadow-gold">
-                            皇家<span className="text-gold italic">艺术</span>盲盒<br/>全球限量发行
+                            精美<span className="text-gold italic"> JoJo </span>盲盒<ul/> NJU试点发售
                         </h2>
                         <p className="text-white/70 text-lg mb-8 max-w-lg">
-                            探索奢华艺术珍藏，每一款盲盒都蕴藏着世界级艺术家的匠心之作，只为少数人专属定制。
+                            全心追求真正的动漫还原，一心赤诚只为NJUers
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <button
@@ -56,8 +54,11 @@ const BlindBoxHomepageAd = () => {
                             {/* 主盲盒展示 */}
                             <div className="relative float-effect">
                                 <div className="absolute inset-0 rounded-full gold-gradient opacity-30 blur-xl"></div>
-                                <img src="https://picsum.photos/id/20/600/600" alt="皇家艺术盲盒"
-                                     className="w-full h-auto rounded-xl shadow-2xl border-4 border-gold/30 relative z-10"/>
+                                <img
+                                    src="public/不灭钻石/ren.jpg"
+                                    className="w-full h-auto rounded-xl shadow-2xl border-4 border-gold/30 relative z-10"
+                                    alt="皇家艺术盲盒封面"
+                                />
                                 <div
                                     className="absolute -top-4 -right-4 bg-gold text-luxury-black font-elegant font-bold px-4 py-2 rounded-sm shadow-lg transform rotate-3 z-20">
                                     限量
@@ -69,13 +70,16 @@ const BlindBoxHomepageAd = () => {
                                 className="absolute -z-10 top-1/4 -left-10 w-20 h-20 rounded-full border border-gold/30 rotate-slow"></div>
                             <div
                                 className="absolute -z-10 bottom-1/3 -right-5 w-12 h-12 rounded-full border border-gold/20 rotate-slow"
-                                style={{animationDirection: 'reverse'}}></div>
+                                style={{ animationDirection: 'reverse' }}></div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* 底部装饰条 */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 gold-gradient"></div>
         </section>
     );
 };
 
-export default BlindBoxHomepageAd;
+export default BlindBoxHomepageAd; // 修复了导出语句

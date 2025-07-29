@@ -7,8 +7,7 @@ export default function ReviewCard({ avatar, name, comment, photos = [] }) {
                 <img
                     src={avatar}
                     alt={name}
-                    /*className="w-12 h-12 rounded-full border-2 border-gold object-cover mr-4"*/
-                    height="50px"
+                    className="w-12 h-12 rounded-full border-2 border-gold object-cover mr-4"
                 />
                 <div>
                     <h4 className="text-gold font-elegant text-lg">{name}</h4>
