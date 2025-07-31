@@ -4,49 +4,64 @@ import axios from 'axios'; // 导入axios
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
+const OrderStatus = {
+    PENDING: 'pending',
+    PAID: 'paid',
+    SHIPPED: 'shipped',
+    DELIVERED: 'delivered',
+    CANCELLED: 'cancelled'
+};
+
 export default function Checkout() {
-    // 获取从卡片传递过来的盲盒信息
     const location = useLocation();
     const { box } = location.state || {};
     const navigate = useNavigate();
 
-    // 状态管理
     const [quantity, setQuantity] = useState(1);
-    const [paymentMethod, setPaymentMethod] = useState('wechat'); // 默认微信支付
-    const [error, setError] = useState(''); // 错误信息
-
+    const [paymentMethod, setPaymentMethod] = useState('wechat');
+    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const [address, setAddress] = useState(''); // 新增地址状态
+    const [address, setAddress] = useState('');
 
-    const handleSubmitOrder = async () => {
+    // 在Checkout组件中添加
+    const handleSubmitOrder = () => {
         if (!address.trim()) {
-            alert('请输入收货地址');
+            setError('请输入收货地址');
             return;
         }
 
         setLoading(true);
+
         try {
-            // 构造订单数据
-            const orderData = {
-                product_name: box.title,
-                product_image: box.image,
-                price: box.price,
-                quantity,
-                total: parseFloat(totalPrice),
-                user_id: localStorage.getItem('currentUser') || 1, // 从本地存储获取当前用户ID
-                address: address // 收货地址
+            // 生成唯一订单ID
+            const orderId = `ORD${Date.now()}`;
+
+            // 创建订单数据
+            const newOrder = {
+                id: orderId,
+                userId: 'guest', // 简化版本使用guest
+                createTime: new Date().toISOString(),
+                items: [{
+                    title: box.title,
+                    image: box.image,
+                    price: box.price,
+                    quantity: quantity
+                }],
+                totalAmount: parseFloat((box.price * quantity).toFixed(2)),
+                status: OrderStatus.PAID,
+                address: address,
+                paymentMethod: paymentMethod
             };
 
-            // 调用后端API提交订单
-            const response = await axios.post('/api/orders', orderData);
+            // 保存到本地存储
+            const existingOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+            existingOrders.push(newOrder);
+            localStorage.setItem('userOrders', JSON.stringify(existingOrders));
 
-            if (response.data.success) {
-                // 提交成功跳转到订单管理页
-                navigate('/order-management');
-            }
-        } catch (error) {
-            console.error('提交订单失败:', error);
-            alert('订单提交失败，请重试');
+            // 跳转到订单管理页面
+            navigate('/order-management');
+        } catch (err) {
+            setError('订单提交失败，请重试');
         } finally {
             setLoading(false);
         }

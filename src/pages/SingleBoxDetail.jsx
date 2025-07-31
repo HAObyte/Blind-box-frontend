@@ -55,7 +55,7 @@ export default function SingleBoxDetail() {
                                 <img
                                     src={box.image}
                                     alt={box.title}
-                                    className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
+
                                 />
                                 <div className="absolute top-4 left-4 bg-gold text-luxury-black px-3 py-1 rounded-full text-sm font-bold">
                                     {getRarityLabel(box.tags)}

@@ -1,12 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import boxData from "../data/boxData.jsx";
 
 const DetailCard = ({ boxes }) => {
     const navigate = useNavigate();
 
     const handleCardClick = (box) => {
         navigate('/checkout', {
-            state: { box }
+            state: {
+                box
+            }
         });
     };
     const handleDetailClick = (box) => {

@@ -83,7 +83,7 @@ function NavBar() {
                                     <div className="py-2">
                                         <p className="px-4 py-1 text-xs text-white/50">登录账号：{currentUser?.username}</p>
                                         <div className="border-t border-gold/20 my-1"></div>
-                                        <Link to="/profile" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold transition-colors">
+                                        <Link to="/order-management" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold transition-colors">
                                             <i className="fa fa-user mr-2"></i>个人订单管理
                                         </Link>
                                         <div className="border-t border-gold/20 my-1"></div>
