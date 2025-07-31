@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import BoxList from './pages/BoxList.jsx';
+import Reviews from './pages/Review.jsx';
+/*import AboutUs from './pages/AboutUs.jsx';*/
 import { AuthProvider, useAuth } from './context/AuthContext';
 
 const PrivateRoute = ({ children }) => {
@@ -16,7 +19,10 @@ export default function App() {
             <Router>
                 <Routes>
                     <Route path="/login" element={<Login />} />
+                    <Route path="/box-list" element={<BoxList />}></Route>
                     <Route path="/register" element={<Register />} />
+                    <Route path="/review" element={<Reviews/>}></Route>
+                    {/*<Route path="/about-us" element={<AboutUs/>}></Route>*/}
                     <Route
                         path="/"
                         element={

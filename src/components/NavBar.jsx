@@ -23,14 +23,11 @@ function NavBar() {
                     {isLoggedIn && (
                         <>
                             <Link to="/"
-                                  className="font-modern text-white hover:text-gold transition-colors duration-300 border-b-2 border-gold py-1">
+                                  className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
                                 首页
                             </Link>
                             <Link to="/box-list" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
-                                盲盒系列
-                            </Link>
-                            <Link to="/box-search" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
-                                盲盒搜索
+                                所有盲盒
                             </Link>
                             <Link to="/review" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
                                 盲盒评论

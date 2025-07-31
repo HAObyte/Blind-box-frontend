@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/BlindBoxHomepageAd.css'; // 样式文件将在后面提供
+import '../styles/BlindBoxHomepageAd.css';
+import {Link} from "react-router-dom"; // 样式文件将在后面提供
 
 const BlindBoxHomepageAd = () => {
     return (
@@ -24,11 +25,7 @@ const BlindBoxHomepageAd = () => {
                         <div className="flex flex-wrap gap-4">
                             <button
                                 className="px-8 py-3 bg-gold text-luxury-black font-modern font-semibold rounded-sm hover:bg-gold-light transition-all duration-300 shadow-gold hover:shadow-gold-glow transform hover:-translate-y-1">
-                                立即探索
-                            </button>
-                            <button
-                                className="px-8 py-3 bg-transparent border border-gold/70 text-gold font-modern font-semibold rounded-sm hover:border-gold hover:bg-gold/10 transition-all duration-300 transform hover:-translate-y-1">
-                                了解系列 <i className="fa fa-long-arrow-right ml-2"></i>
+                                <Link to="/box-list">立即探索</Link>
                             </button>
                         </div>
                         <div className="mt-12 flex items-center">

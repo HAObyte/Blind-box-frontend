@@ -110,7 +110,7 @@ export default function Home()
                             <h2 className="font-elegant text-3xl md:text-4xl text-white mb-2">经典Stand盲盒系列</h2>
                             <p className="text-white/50">探索我们精心挑选的经典收藏系列</p>
                         </div>
-                        <a href="https://www.nju.edu.cn/"
+                        <a href="/box-list"
                            className="hidden md:flex items-center text-gold hover:text-gold-light transition-colors">
                             查看全部系列 <i className="fa fa-angle-right ml-2"></i>
                         </a>
@@ -134,7 +134,7 @@ export default function Home()
                             <h2 className="font-elegant text-3xl md:text-4xl text-white mb-2">热门潮流-主题盲盒</h2>
                             <p className="text-white/50">当下最热门的主题盲盒系列</p>
                         </div>
-                        <a href="https://www.nju.edu.cn/"
+                        <a href="/box-list"
                            className="hidden md:flex items-center text-gold hover:text-gold-light transition-colors">
                             查看全部系列 <i className="fa fa-angle-right ml-2"></i>
                         </a>
@@ -158,7 +158,7 @@ export default function Home()
                             <h2 className="font-elegant text-3xl md:text-4xl text-white mb-2">客户评价-眼见为实</h2>
                             <p className="text-white/50">我们致力于产品的真实性，让我们的客户替我们说话</p>
                         </div>
-                        <a href="https://www.nju.edu.cn/"
+                        <a href="/box-list"
                            className="hidden md:flex items-center text-gold hover:text-gold-light transition-colors">
                             查看全部评论 <i className="fa fa-angle-right ml-2"></i>
                         </a>
