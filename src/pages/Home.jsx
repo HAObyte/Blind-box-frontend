@@ -5,6 +5,7 @@ import LuxuryCard from "../components/LuxuryCard.jsx";
 import HotBoxCard from "../components/HotBoxCard.jsx";
 import ReviewCard from "../components/ReviewCard.jsx";
 import BlindBoxHomepageAd from "../components/HomePageAD.jsx";
+import AboutUsSection from "../components/AboutUsSection.jsx";
 import {Link} from "react-router-dom";
 
 export default function Home()
@@ -104,6 +105,7 @@ export default function Home()
             <NavBar/>
             <BlindBoxHomepageAd/>
 
+
             <section className="py-16 bg-luxury-black relative">
                 <div className="container mx-auto px-4">
                     <div className="flex justify-between items-end mb-12">
@@ -170,6 +172,7 @@ export default function Home()
                     </div>
                 </div>
             </section>
+            <AboutUsSection/>
             <Footer/>
         </>
     );

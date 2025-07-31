@@ -29,22 +29,6 @@ const BlindBoxHomepageAd = () => {
                                 立即探索
                             </Link>
                         </div>
-                        <div className="mt-12 flex items-center">
-                            <div className="flex -space-x-2">
-                                <img src="https://picsum.photos/id/91/100/100" alt="用户头像"
-                                     className="w-10 h-10 rounded-full border-2 border-luxury-black"/>
-                                <img src="https://picsum.photos/id/92/100/100" alt="用户头像"
-                                     className="w-10 h-10 rounded-full border-2 border-luxury-black"/>
-                                <img src="https://picsum.photos/id/93/100/100" alt="用户头像"
-                                     className="w-10 h-10 rounded-full border-2 border-luxury-black"/>
-                                <img src="https://picsum.photos/id/94/100/100" alt="用户头像"
-                                     className="w-10 h-10 rounded-full border-2 border-luxury-black"/>
-                            </div>
-                            <div className="ml-4">
-                                <div className="text-white font-semibold">已有 2,500+ 收藏家加入</div>
-                                <div className="text-gold text-sm">今日新增 42 位尊贵会员</div>
-                            </div>
-                        </div>
                     </div>
 
                     <div className="md:w-1/2 relative">
