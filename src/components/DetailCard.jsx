@@ -9,6 +9,11 @@ const DetailCard = ({ boxes }) => {
             state: { box }
         });
     };
+    const handleDetailClick = (box) => {
+        navigate('/single-box-detail', {
+            state: { box },
+        })
+    }
 
     // 修复：增加字段存在性检查，避免访问undefined
     const isLimited = (box) => {
@@ -19,7 +24,7 @@ const DetailCard = ({ boxes }) => {
     };
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 p-4">
             {/* 修复：遍历前检查boxes是否存在，避免空数组报错 */}
             {(boxes || []).map((box) => (
                 // 确保每个box有id，避免key警告
@@ -32,7 +37,7 @@ const DetailCard = ({ boxes }) => {
                         <img
                             src={box?.image || ''} // 增加默认值，避免图片路径undefined
                             alt={box?.title || '盲盒'}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+
                         />
                         {/* 只在box存在时判断限量版 */}
                         {box && isLimited(box) && (
@@ -57,12 +62,21 @@ const DetailCard = ({ boxes }) => {
                                     <span className="text-white/50 text-sm line-through ml-2">¥{box.originalPrice}</span>
                                 )}
                             </div>
-                            <button
-                                className="bg-gold/20 hover:bg-gold/30 text-gold text-sm px-3 py-1 rounded-full transition-colors"
-                                onClick={() => handleCardClick(box)}
-                            >
-                                立即购买
-                            </button>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <button
+                                    onClick={()=>handleCardClick(box)} // 修改为新的购买处理函数
+                                    className="flex-1 py-3 bg-gradient-to-r from-gold to-gold-light text-luxury-black font-modern font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/20 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2"
+                                >
+                                    <span>立即购买</span>
+                                </button>
+                                <button
+                                    onClick={() => handleDetailClick(box)}
+                                    className="flex-1 py-3 bg-transparent border border-gold/50 text-gold font-modern font-semibold rounded-lg hover:bg-gold/10 hover:border-gold transition-all duration-300 flex items-center justify-center space-x-2"
+                                >
+                                    <span> 查看详情 </span>
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

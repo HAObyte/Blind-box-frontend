@@ -76,7 +76,7 @@ export default function BoxList() {
                     </div>
 
                     {/* 盲盒列表 */}
-                    <div className="grid gap-8 grid-cols-1 sm:grid-cols-1 lg:grid-cols-1"> {/* 修复网格布局（sm:grid-cols-2） */}
+                    <div className="grid gap-8 "> {/* 修复网格布局（sm:grid-cols-2） */}
                         {filteredBoxes.length > 0 ? (
                             <DetailCard boxes={filteredBoxes} />
                         ) : (

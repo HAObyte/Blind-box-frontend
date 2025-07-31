@@ -11,6 +11,7 @@ import BoxList from './pages/BoxList.jsx';
 import Checkout from './pages/Checkout';
 
 import { AuthProvider, useAuth } from './context/AuthContext';
+import SingleBoxDetail from "./pages/SingleBoxDetail.jsx";
 
 
 const PrivateRoute = ({ children }) => {
@@ -31,6 +32,7 @@ export default function App() {
                     <Route path="/box-list" element={<BoxList />} />
                     <Route path="/review" element={<Review />} />
                     <Route path="/about-us" element={<AboutUs />} />
+                    <Route path='/single-box-detail' element={<SingleBoxDetail />} />
                     <Route
                         path="/"
                         element={
