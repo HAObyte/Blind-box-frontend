@@ -9,6 +9,7 @@ import NavBar from './components/NavBar.jsx';
 import Footer from './components/Footer.jsx';
 import BoxList from './pages/BoxList.jsx';
 import Checkout from './pages/Checkout';
+import OrderManager from './pages/OrderManagement.jsx';
 
 import { AuthProvider, useAuth } from './context/AuthContext';
 import SingleBoxDetail from "./pages/SingleBoxDetail.jsx";
@@ -33,6 +34,14 @@ export default function App() {
                     <Route path="/review" element={<Review />} />
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path='/single-box-detail' element={<SingleBoxDetail />} />
+                    <Route
+                        path="/order-management"
+                        element={
+                            <PrivateRoute>
+                                <OrderManager />
+                            </PrivateRoute>
+                        }
+                    />
                     <Route
                         path="/"
                         element={

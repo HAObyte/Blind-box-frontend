@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios'; // 导入axios
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
@@ -9,30 +10,71 @@ export default function Checkout() {
     const { box } = location.state || {};
     const navigate = useNavigate();
 
-    // 新增：数量状态管理
+    // 状态管理
     const [quantity, setQuantity] = useState(1);
-    // 根据盲盒类型设置最大库存（使用现有数据推断）
+    const [paymentMethod, setPaymentMethod] = useState('wechat'); // 默认微信支付
+    const [error, setError] = useState(''); // 错误信息
+
+    const [loading, setLoading] = useState(false);
+    const [address, setAddress] = useState(''); // 新增地址状态
+
+    const handleSubmitOrder = async () => {
+        if (!address.trim()) {
+            alert('请输入收货地址');
+            return;
+        }
+
+        setLoading(true);
+        try {
+            // 构造订单数据
+            const orderData = {
+                product_name: box.title,
+                product_image: box.image,
+                price: box.price,
+                quantity,
+                total: parseFloat(totalPrice),
+                user_id: localStorage.getItem('currentUser') || 1, // 从本地存储获取当前用户ID
+                address: address // 收货地址
+            };
+
+            // 调用后端API提交订单
+            const response = await axios.post('/api/orders', orderData);
+
+            if (response.data.success) {
+                // 提交成功跳转到订单管理页
+                navigate('/order-management');
+            }
+        } catch (error) {
+            console.error('提交订单失败:', error);
+            alert('订单提交失败，请重试');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // 根据盲盒类型设置最大库存
     const maxStock = box?.tags?.includes('限量版') || box?.tags?.includes('限时') || box?.rarity === '顶级稀有'
         ? 10
         : 99;
 
-    // 新增：数量变化处理函数
+    // 数量变化处理函数
     const handleQuantityChange = (newQuantity) => {
-        // 确保数量在1和最大库存之间
         if (newQuantity >= 1 && newQuantity <= maxStock) {
             setQuantity(newQuantity);
         }
     };
 
-    // 新增：当组件加载或盲盒信息变化时重置数量
+    // 当组件加载或盲盒信息变化时重置数量
     useEffect(() => {
         setQuantity(1);
+        setAddress('');
+        setError('');
     }, [box]);
 
     // 如果没有传递盲盒信息，返回盲盒列表
     if (!box) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center bg-luxury-black">
                 <div className="text-center">
                     <h2 className="text-2xl text-gold mb-4">未找到商品信息</h2>
                     <button
@@ -88,8 +130,14 @@ export default function Checkout() {
                     <div className="p-6">
                         <h2 className="font-elegant text-2xl text-white mb-6">结算信息</h2>
 
+                        {error && (
+                            <div className="bg-red-900/30 border border-red-500/50 text-red-300 p-3 rounded-lg mb-4">
+                                {error}
+                            </div>
+                        )}
+
                         <div className="space-y-6">
-                            {/* 数量选择 - 完善版 */}
+                            {/* 数量选择 */}
                             <div>
                                 <label className="block text-white/70 mb-2">购买数量</label>
                                 <div className="flex items-center w-32">
@@ -108,7 +156,6 @@ export default function Checkout() {
                                         max={maxStock}
                                         value={quantity}
                                         onChange={(e) => {
-                                            // 处理手动输入的情况
                                             const inputValue = parseInt(e.target.value, 10);
                                             if (!isNaN(inputValue)) {
                                                 handleQuantityChange(inputValue);
@@ -133,6 +180,8 @@ export default function Checkout() {
                                 <label className="block text-white/70 mb-2">收货地址</label>
                                 <textarea
                                     placeholder="请输入收货地址"
+                                    value={address}
+                                    onChange={(e) => setAddress(e.target.value)}
                                     className="w-full bg-luxury-black/50 border border-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors h-24"
                                 ></textarea>
                             </div>
@@ -141,22 +190,43 @@ export default function Checkout() {
                             <div>
                                 <label className="block text-white/70 mb-2">支付方式</label>
                                 <div className="grid grid-cols-3 gap-4">
-                                    <div className="bg-luxury-black/50 border border-gold/30 rounded-lg p-3 cursor-pointer hover:border-gold transition-colors">
+                                    <div
+                                        className={`bg-luxury-black/50 rounded-lg p-3 cursor-pointer transition-colors ${
+                                            paymentMethod === 'card'
+                                                ? 'border border-gold bg-gold/10'
+                                                : 'border border-gold/30 hover:border-gold'
+                                        }`}
+                                        onClick={() => setPaymentMethod('card')}
+                                    >
                                         <i className="fa fa-credit-card text-gold mb-1"></i>
                                         <p className="text-white text-sm">银行卡</p>
                                     </div>
-                                    <div className="bg-luxury-black/50 border border-gold/30 rounded-lg p-3 cursor-pointer hover:border-gold transition-colors">
+                                    <div
+                                        className={`bg-luxury-black/50 rounded-lg p-3 cursor-pointer transition-colors ${
+                                            paymentMethod === 'wechat'
+                                                ? 'border border-gold bg-gold/10'
+                                                : 'border border-gold/30 hover:border-gold'
+                                        }`}
+                                        onClick={() => setPaymentMethod('wechat')}
+                                    >
                                         <i className="fa fa-wechat text-gold mb-1"></i>
                                         <p className="text-white text-sm">微信支付</p>
                                     </div>
-                                    <div className="bg-luxury-black/50 border border-gold/30 rounded-lg p-3 cursor-pointer hover:border-gold transition-colors">
+                                    <div
+                                        className={`bg-luxury-black/50 rounded-lg p-3 cursor-pointer transition-colors ${
+                                            paymentMethod === 'alipay'
+                                                ? 'border border-gold bg-gold/10'
+                                                : 'border border-gold/30 hover:border-gold'
+                                        }`}
+                                        onClick={() => setPaymentMethod('alipay')}
+                                    >
                                         <i className="fa fa-paypal text-gold mb-1"></i>
                                         <p className="text-white text-sm">支付宝</p>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* 订单总结 - 同步数量变化 */}
+                            {/* 订单总结 */}
                             <div className="border-t border-gold/20 pt-4">
                                 <div className="flex justify-between mb-2">
                                     <span className="text-white/70">商品单价</span>
@@ -176,9 +246,23 @@ export default function Checkout() {
                                 </div>
                             </div>
 
-                            {/* 提交订单按钮 */}
-                            <button className="w-full py-3 bg-gradient-to-r from-gold to-gold-light text-luxury-black font-modern font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/20 transform hover:-translate-y-1 transition-all duration-300">
-                                提交订单
+                            {/* 提交订单按钮 - 添加点击事件和加载状态 */}
+                            <button
+                                onClick={handleSubmitOrder}
+                                disabled={loading}
+                                className="w-full py-3 bg-gradient-to-r from-gold to-gold-light text-luxury-black font-modern font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/20 transform hover:-translate-y-1 transition-all duration-300"
+                            >
+                                {loading ? (
+                                    <>
+                                        <i className="fa fa-spinner fa-spin mr-2"></i>
+                                        提交中...
+                                    </>
+                                ) : (
+                                    <>
+                                        <i className="fa fa-check-circle mr-2"></i>
+                                        提交订单
+                                    </>
+                                )}
                             </button>
                         </div>
                     </div>
