@@ -14,12 +14,10 @@ export default function ReviewCard({ avatar, name, comment, photos = [] }) {
                 </div>
             </header>
 
-            {/* 评论内容 */}
             <div className="prose prose-sm text-white/80 mb-4">
                 <p>{comment}</p>
             </div>
 
-            {/* 晒图区域：调整为等比例缩小 */}
             {photos.length > 0 && (
                 <div className="grid grid-cols-6 gap-2">
                     {photos.map((src, index) => (

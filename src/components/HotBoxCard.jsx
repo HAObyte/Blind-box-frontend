@@ -6,7 +6,6 @@ export default function HotBoxCard({ title, image, price, tags = [] }) {
             <img
                 src={image}
                 alt={title}
-
             />
             <div className="p-4">
                 <h3 className="font-elegant text-gold text-lg mb-2">{title}</h3>

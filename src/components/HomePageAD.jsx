@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/BlindBoxHomepageAd.css'; // 样式文件将在后面提供
+import '../styles/BlindBoxHomepageAd.css';
+import {Link} from "react-router-dom"; // 样式文件将在后面提供
 
 const BlindBoxHomepageAd = () => {
     return (
@@ -22,14 +23,11 @@ const BlindBoxHomepageAd = () => {
                             全心追求真正的动漫还原，一心赤诚只为NJUers
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <button
+                            <Link
+                                to="box-list"
                                 className="px-8 py-3 bg-gold text-luxury-black font-modern font-semibold rounded-sm hover:bg-gold-light transition-all duration-300 shadow-gold hover:shadow-gold-glow transform hover:-translate-y-1">
                                 立即探索
-                            </button>
-                            <button
-                                className="px-8 py-3 bg-transparent border border-gold/70 text-gold font-modern font-semibold rounded-sm hover:border-gold hover:bg-gold/10 transition-all duration-300 transform hover:-translate-y-1">
-                                了解系列 <i className="fa fa-long-arrow-right ml-2"></i>
-                            </button>
+                            </Link>
                         </div>
                         <div className="mt-12 flex items-center">
                             <div className="flex -space-x-2">
@@ -55,7 +53,7 @@ const BlindBoxHomepageAd = () => {
                             <div className="relative float-effect">
                                 <div className="absolute inset-0 rounded-full gold-gradient opacity-30 blur-xl"></div>
                                 <img
-                                    src="public/AD.png"
+                                    src="/AD.png"
                                     className="w-full h-auto rounded-xl shadow-2xl border-4 border-gold/30 relative z-10"
                                     alt="皇家艺术盲盒封面"
                                 />

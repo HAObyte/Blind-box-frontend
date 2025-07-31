@@ -20,20 +20,20 @@ function NavBar() {
 
                 {/* 导航链接 - 桌面端 */}
                 <nav className="hidden md:flex items-center space-x-8">
-                    {isLoggedIn && (
+                    {(
                         <>
                             <Link to="/"
-                                  className="font-modern text-white hover:text-gold transition-colors duration-300 border-b-2 border-gold py-1">
+                                  className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
                                 首页
                             </Link>
                             <Link to="/box-list" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
-                                盲盒系列
-                            </Link>
-                            <Link to="/box-search" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
-                                盲盒搜索
+                                所有盲盒
                             </Link>
                             <Link to="/review" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
-                                盲盒评论
+                                用户评论
+                            </Link>
+                            <Link to="/about-us" className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1">
+                                关于项目
                             </Link>
                         </>
                     )}
@@ -42,57 +42,39 @@ function NavBar() {
                 {/* 用户功能区 */}
                 <div className="flex items-center space-x-5">
                     <div className="hidden md:block h-8 w-[1px] bg-gold/30 mx-1"></div>
-                    {isLoggedIn ? (
-                        // 用户头像和下拉菜单
-                        <div className="relative group">
-                            <div className="w-9 h-9 rounded-full border-2 border-gold/50 overflow-hidden cursor-pointer">
-                                <img
-                                    src="https://picsum.photos/id/64/200/200"
-                                    alt="用户头像"
-                                    height="50px"
-                                />
-                            </div>
-                            <div className="absolute right-0 mt-2 w-48 bg-luxury-gray border border-gold/30 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
-                                <div className="py-2">
-                                    <Link to="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
-                                        个人中心
-                                    </Link>
-                                    <Link to="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
-                                        我的收藏
-                                    </Link>
-                                    <Link to="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
-                                        设置
-                                    </Link>
-                                    <div className="border-t border-gold/20 my-1"></div>
-                                    <Link
-                                        to="#"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            logout();
-                                        }}
-                                        className="block px-4 py-2 text-sm text-white/70 hover:bg-luxury-black hover:text-gold"
-                                    >
-                                        退出登录
-                                    </Link>
-                                </div>
+                    <div className="relative group">
+                        <div className="w-9 h-9 rounded-full border-2 border-gold/50 overflow-hidden cursor-pointer">
+                            <img
+                                src="https://picsum.photos/id/64/200/200"
+                                alt="用户头像"
+                                height="50px"
+                            />
+                        </div>
+                        <div className="absolute right-0 mt-2 w-48 bg-luxury-gray border border-gold/30 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+                            <div className="py-2">
+                                <Link to="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
+                                    个人中心
+                                </Link>
+                                <Link to="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
+                                    我的收藏
+                                </Link>
+                                <Link to="#" className="block px-4 py-2 text-sm text-white hover:bg-luxury-black hover:text-gold">
+                                    设置
+                                </Link>
+                                <div className="border-t border-gold/20 my-1"></div>
+                                <Link
+                                    to="/login"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        logout();
+                                    }}
+                                    className="block px-4 py-2 text-sm text-white/70 hover:bg-luxury-black hover:text-gold"
+                                >
+                                    退出登录
+                                </Link>
                             </div>
                         </div>
-                    ) : (
-                        <div className="flex space-x-3">
-                            <Link
-                                to="/login"
-                                className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1"
-                            >
-                                登录
-                            </Link>
-                            <Link
-                                to="/register"
-                                className="font-modern text-white/70 hover:text-gold transition-colors duration-300 border-b-2 border-transparent hover:border-gold/50 py-1"
-                            >
-                                注册
-                            </Link>
-                        </div>
-                    )}
+                    </div>
 
                     {/* 移动端菜单按钮 */}
                     <button className="md:hidden text-white/80 hover:text-gold transition-colors duration-300">
