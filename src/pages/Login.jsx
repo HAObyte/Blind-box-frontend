@@ -1,20 +1,24 @@
 // src/pages/Login.jsx
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom'; // 引入 useNavigate 函数
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const { login } = useAuth();
-    const navigate = useNavigate(); // 获取 navigate 函数
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // 这里可添加向后端验证用户名和密码的逻辑
-        // 假设验证成功
-        login(); // 调用 login 函数更新登录状态
-        navigate('/'); // 跳转到主页
+        setLoading(true);
+        setError('');
+        login(username, password);
+        navigate('/');
+
     };
 
     return (
@@ -36,12 +40,21 @@ function Login() {
                     <h2 className="font-elegant text-3xl text-gold text-center mb-2 tracking-wider">
                         尊贵的用户 欢迎回来
                     </h2>
+
+                    {/* 错误提示 */}
+                    {error && (
+                        <div className="mb-4 bg-red-500/10 border border-red-400/30 text-red-300 p-3 rounded-lg">
+                            <i className="fa fa-exclamation-circle mr-2"></i>
+                            {error}
+                        </div>
+                    )}
+
                     <div className="mb-6 relative">
                         <input
                             type="text"
                             placeholder="用户名"
-                            value={username} // 绑定 username 状态
-                            onChange={(e) => setUsername(e.target.value)} // 更新 username 状态
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             className="w-full pl-10 pr-4 py-3 bg-luxury-black/50 border border-gold/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-300 text-white placeholder-white/40"
                             required
                         />
@@ -50,20 +63,23 @@ function Login() {
                         <input
                             type="password"
                             placeholder="密码"
-                            value={password} // 绑定 password 状态
-                            onChange={(e) => setPassword(e.target.value)} // 更新 password 状态
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             className="w-full pl-10 pr-4 py-3 bg-luxury-black/50 border border-gold/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-300 text-white placeholder-white/40"
                             required
                         />
                     </div>
-                    <p className="text-center text-white/60 mb-8">点击下方按钮登录</p>
-
                     <button
-                        onClick={handleSubmit} // 调用 handleSubmit 函数
+                        onClick={handleSubmit}
                         className="w-full py-3 bg-gradient-to-r from-gold to-gold-light text-luxury-black font-modern font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/20 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2"
+                        disabled={loading}
                     >
-                        <i className="fa fa-sign-in"></i>
-                        <span>登录</span>
+                        {loading ? (
+                            <i className="fa fa-spinner fa-spin"></i>
+                        ) : (
+                            <i className="fa fa-sign-in"></i>
+                        )}
+                        <span>{loading ? '登录中...' : '登录'}</span>
                     </button>
 
                     {/* 注册链接 */}
