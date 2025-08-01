@@ -39,7 +39,7 @@ export default function Login() {
         try {
             setLoading(true);
             await login(username, password);
-            localStorage.removeItem('userOrders');
+            localStorage.clear();
             navigate('/');
         } catch (err) {
             setError(err.message);
