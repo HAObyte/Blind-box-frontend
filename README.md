@@ -1,69 +1,37 @@
-# React + TypeScript + Vite
+# 2025 web开发项目说明
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ 项目负责人： 付浩
 
-Currently, two official plugins are available:
+## 基本信息
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+>项目GitHub仓库地址
 
-## Expanding the ESLint configuration
+- 前端 https://github.com/HAObyte/Blind-box-frontend
+- 后端 https://github.com/HAObyte/BlindBox-backend
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+其中包括项目开发过程当中完整的版本管理记录
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+>打包工具概述
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- 通过配置Vite的构建选项来实现了项目的打包
+- 最后产生一个`dist`文件夹
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+>额外实现的功能概述
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+本项目完全实现课内的要求功能点之后，参考现代网页的设计风格，做出了以下升级：
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- 页面布局参考现代网页，组件功能封装清晰
+- 在页脚组件增加用户订阅功能
+- 增加 “关于项目” 页面，讲述项目开发过程
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+>学习当中影响最深刻的点
+
+这门课程让我印象最深刻的是，每科技术只在课堂上听一遍，确实很难完全听懂，必须课后花大量时间去熟悉、摸索。不过最终的收获也实实在在，不仅学到了知识，更让我意识到，原来通过自学也能掌握这么多东西——课堂上老师为我们搭建了学习框架，而填充细节、深化理解的过程，正是自己成长的关键
+
+还值得一提的就是我的悲催时刻，经常在前后端联调的时候怎么都找不到404的原因，为此甚至好几次差点崩溃......
+
+>对于课程内容的改进建议
+
+- 首先就是课程开在暑期第二周，听一下发现不适合自己的时候已经退不了课了
+- 然后课程进度太快，太多东西只能听一个名词，很多时候老师在讲，我在搜索某某是什么意思
+- 其他都非常好，老师非常耐心，最后课程结束的时候甚至有一种不舍的感觉......
